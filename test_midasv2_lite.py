@@ -58,8 +58,8 @@ if __name__ == '__main__':
         exit(ret)
     print('done')
 
-    ori_img = cv2.imread('./motorcycle_741x497.png')
-    img = cv2.cvtColor(ori_img, cv2.COLOR_BGR2RGB)
+    img = cv2.imread('./img/motorcycle_741x497.png')
+    # img = cv2.cvtColor(ori_img, cv2.COLOR_BGR2RGB)
 
     # init runtime environment
     print('--> Init runtime environment')
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     if platform.machine() == 'aarch64':
         target = None
     else:
-        target = 'rk1808'
+        target = 'rk3399pro'
     ret = rknn_lite.init_runtime(target=target)
     if ret != 0:
         print('Init runtime environment failed')
@@ -76,10 +76,10 @@ if __name__ == '__main__':
 
     # Inference
     print('--> Running model')
-    outputs = rknn_lite.inference(inputs=[img])
-    print(outputs)
+    # outputs = rknn_lite.inference(inputs=[img])
+    # print(outputs)
     # show_top5(outputs)
-    save_depth(outputs, rknn_lite)
+    save_depth(img, rknn_lite)
     print('done')
 
     rknn_lite.release()
