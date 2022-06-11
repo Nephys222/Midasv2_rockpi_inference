@@ -4,8 +4,6 @@ import numpy as np
 from rknnlite.api import RKNNLite
 from MidasDepthEstimation.midasRknnEstimator import midasRknnEstimator
 
-INPUT_SIZE = 256
-
 def save_depth(img, rknn):
 
 	# Initialize depth estimation model
@@ -25,7 +23,7 @@ def save_depth(img, rknn):
 
 	# Join the input image, the estiamted depth and the combined image
 	img_out = np.hstack((img, colorDepth, combinedImg))
-	cv2.imwrite("./result_depth1.jpg",img_out)
+	cv2.imwrite("./result_depth2.jpg",img_out)
 
 def show_top5(result):
     output = result[0].reshape(-1)

@@ -14,3 +14,15 @@ KeyboardInterrupt
 done
 --> Init runtime environment
 Init runtime environment failed
+I NPUTransfer: Starting NPU Transfer Client, Transfer version 2.1.0 (b5861e7@2020-11-23T11:50:51)
+D RKNNAPI: ==============================================
+D RKNNAPI: RKNN VERSION:
+D RKNNAPI:   API: 1.7.1 (566a9b6 build: 2021-10-28 14:56:17)
+D RKNNAPI:   DRV: 0.9.9 (8509ec7 build: 2019-08-05 10:54:34)
+D RKNNAPI: ==============================================
+--> Load RKNN model
+done
+--> Init runtime environment
+done
+--> Running model
+done
