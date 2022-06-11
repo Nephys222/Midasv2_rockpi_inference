@@ -23,7 +23,7 @@ def save_depth(img, rknn):
 
 	# Join the input image, the estiamted depth and the combined image
 	img_out = np.hstack((img, colorDepth, combinedImg))
-	cv2.imwrite("./result_depth2.jpg",img_out)
+	cv2.imwrite("./result_depth3.jpg",img_out)
 
 def show_top5(result):
     output = result[0].reshape(-1)
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # load RKNN model
     print('--> Load RKNN model')
-    ret = rknn_lite.load_rknn('./midas2_float16_quant.rknn')
+    ret = rknn_lite.load_rknn('./midasv2_float16_quant.rknn')
     if ret != 0:
         print('Load RKNN model failed')
         exit(ret)
