@@ -21,7 +21,7 @@ class midasRknnEstimator():
 
 		# Perform inference on the image
 		# rawDisparity = rknn.inference(input_tensor)
-		outputs = rknn.inference(inputs=[image])
+		outputs = rknn.inference(inputs=[input_tensor])
 		print("Outputs: {}".format(outputs))
 		rawDisparity = outputs[0][0]
 		print("RawDisp: {}".format(rawDisparity))
