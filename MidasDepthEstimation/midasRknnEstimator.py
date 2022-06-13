@@ -21,8 +21,10 @@ class midasRknnEstimator():
 
 		# Perform inference on the image
 		# rawDisparity = rknn.inference(input_tensor)
-		outputs = rknn.inference(inputs=[input_tensor])
+		outputs = rknn.inference(inputs=[image])
+		print("Outputs: {}".format(outputs))
 		rawDisparity = outputs[0][0]
+		print("RawDisp: {}".format(rawDisparity))
 
 		# Normalize and resize raw disparity
 		processedDisparity = self.processRawDisparity(rawDisparity, image.shape)
@@ -35,6 +37,8 @@ class midasRknnEstimator():
 
 		return colorizedDisparity
 
+
+
 	def prepareInputForInference(self, image):
 		img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 		self.img_height, self.img_width, self.img_channels = img.shape
@@ -42,7 +46,7 @@ class midasRknnEstimator():
 		# Input values should be from -1 to 1 with a size of 128 x 128 pixels for the fornt model
 		# and 256 x 256 pixels for the back model
 		img_input = cv2.resize(img, (self.inputWidth,self.inputHeight),interpolation = cv2.INTER_CUBIC).astype(np.float32)
-		
+
 		# Scale input pixel values to -1 to 1
 		mean=[0.485, 0.456, 0.406]
 		std=[0.229, 0.224, 0.225]

@@ -23,7 +23,7 @@ def save_depth(img, rknn):
 
 	# Join the input image, the estiamted depth and the combined image
 	img_out = np.hstack((img, colorDepth, combinedImg))
-	cv2.imwrite("./result_depth3.jpg",img_out)
+	cv2.imwrite("./result_depth4.jpg",img_out)
 
 def show_top5(result):
     output = result[0].reshape(-1)
@@ -56,8 +56,8 @@ if __name__ == '__main__':
         exit(ret)
     print('done')
 
-    img = cv2.imread('./img/motorcycle_741x497.png')
-    # img = cv2.cvtColor(ori_img, cv2.COLOR_BGR2RGB)
+    ori_img = cv2.imread('./img/motorcycle_741x497.png')
+    img = cv2.cvtColor(ori_img, cv2.COLOR_BGR2RGB)
 
     # init runtime environment
     print('--> Init runtime environment')
