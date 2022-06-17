@@ -22,9 +22,9 @@ class midasRknnEstimator():
 		# Perform inference on the image
 		# rawDisparity = rknn.inference(input_tensor)
 		outputs = rknn.inference(inputs=[input_tensor])
-		print("Outputs: {}".format(outputs))
+		# print("Outputs: {}".format(outputs))
 		rawDisparity = outputs[0][0]
-		print("RawDisp: {}".format(rawDisparity))
+		# print("RawDisp: {}".format(rawDisparity))
 
 		# Normalize and resize raw disparity
 		processedDisparity = self.processRawDisparity(rawDisparity, image.shape)
@@ -50,11 +50,11 @@ class midasRknnEstimator():
 		# Scale input pixel values to -1 to 1
 		mean=[0.485, 0.456, 0.406]
 		std=[0.229, 0.224, 0.225]
-		reshape_img = img_input.reshape(1, self.inputHeight, self.inputWidth,3)
+		# reshape_img = img_input.reshape(1, self.inputHeight, self.inputWidth,3)
 		# img_input = ((img_input/ 255.0 - mean) / std).astype(np.float32)
 		# print(img_input.shape)
-		img_input = img_input.astype(np.float32)
-		img_input = img_input[np.newaxis,:,:,:]   
+		# img_input = img_input.astype(np.float32)
+		img_input = img_input[np.newaxis,:,:,:]
 
 		return img_input
 
@@ -89,21 +89,21 @@ class midasRknnEstimator():
 
 
 if __name__ == '__main__':
-	
+
 	# Initialize depth estimation model
-	depthEstimator = midasRknnEstimator()
+	rknnEstimator = midasRknnEstimator()
 
 	# Initialize webcam
 	camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-	cv2.namedWindow("Depth Image", cv2.WINDOW_NORMAL) 	
+	cv2.namedWindow("Depth Image", cv2.WINDOW_NORMAL)
 
 	while True:
 
 		# Read frame from the webcam
-		ret, img = camera.read()	
+		ret, img = camera.read()
 
 		# Estimate depth
-		colorDepth = depthEstimator.estimateDepth(img)
+		colorDepth = rknnEstimator.estimateDepth(img)
 
 		# Combine RGB image and Depth image
 		combinedImg = np.hstack((img, colorDepth))
@@ -116,4 +116,3 @@ if __name__ == '__main__':
 
 	camera.release()
 	cv2.destroyAllWindows()
-	
