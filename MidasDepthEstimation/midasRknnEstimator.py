@@ -71,7 +71,7 @@ class midasRknnEstimator():
 		return estimatedDepth
 
 	def drawDepth(self, processedDisparity):
-		return cv2.applyColorMap(processedDisparity, cv2.COLORMAP_MAGMA)
+		return cv2.applyColorMap(processedDisparity, cv2.COLORMAP_JET)
 
 	def updateFps(self):
 		updateRate = 1

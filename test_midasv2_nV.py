@@ -2,7 +2,7 @@ import platform
 import cv2
 # import pafy
 import numpy as np
-from rknnlite.api import RKNNLite
+from rknn.api import RKNN
 from MidasDepthEstimation.midasRknnEstimator import midasRknnEstimator
 
 # videoUrl = 'https://youtu.be//TGadVbd-C-E'
@@ -68,7 +68,7 @@ def save_depth_video(rknn):
     result.release()
 
 if __name__ == '__main__':
-    rknn_lite = RKNNLite()
+    rknn_lite = RKNN()
 
     # load RKNN model
     print('--> Load RKNN model')
