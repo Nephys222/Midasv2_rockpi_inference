@@ -20,8 +20,7 @@ def save_depth_video(rknn):
     # cv2.namedWindow("Depth Image", cv2.WINDOW_NORMAL)
 
     # We need to set resolutions so, convert them from float to integer.
-    frame_width = 1280*2
-    frame_height = 720
+    frame_width = 192    frame_height = 1080
     size = (frame_width, frame_height)
 
     # Below VideoWriter object will create a frame of above defined The output
@@ -57,7 +56,7 @@ def save_depth_video(rknn):
             img_out = np.hstack((img, colorDepth))
 
             # Write the frame into the file 'filename.avi'
-            result.write(img_out)
+            result.write(img)
 
             # cv2.imshow("Depth Image", img_out)
 
